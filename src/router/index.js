@@ -4,7 +4,6 @@ import EventCreate from "../views/events/create.vue";
 import EventIndex from "../views/events/index.vue";
 import EventShow from "../views/events/show.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -19,12 +18,14 @@ const routes = [
     component: EventIndex
   },
   {
-    path: '/events/1/',
+    path: '/events/:event/',
     name: 'events.show',
-    component: EventShow
+    component: EventShow,
+    props: true
   }
 ];
 
 export default new VueRouter({
+  mode: 'history',
   routes
 });

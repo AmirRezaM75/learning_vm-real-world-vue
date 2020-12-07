@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link :to="{ name: 'events.index'}">List Events</router-link> |
       <router-link :to="{ name: 'events.create'}">Create Event</router-link> |
-      <router-link :to="{ name: 'events.show'}">Show Event</router-link>
+      <router-link :to="{ name: 'events.show', params: { event: 'php-interview'} }">Show Event</router-link>
     </div>
     <router-view />
   </div>
