@@ -18,7 +18,7 @@ const routes = [
     component: EventIndex
   },
   {
-    path: '/events/:event/',
+    path: '/events/:id/',
     name: 'events.show',
     component: EventShow,
     props: true
