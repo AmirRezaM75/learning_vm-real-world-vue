@@ -9,7 +9,7 @@ Vue.component('BaseIcon', BaseIcon)
 Vue.config.productionTip = false;
 
 new Vue({
-  router: router,
+  router,
   store,
   render: h => h(App)
 }).$mount("#app");
