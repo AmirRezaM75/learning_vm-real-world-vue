@@ -17,16 +17,23 @@ export default new Vuex.Store({
       'community'
     ],
     events: [
-      { id: 1, title: 'Read Book', organizer: 'John' },
-      { id: 2, title: 'Write Journal', organizer: 'John' },
-      { id: 3, title: 'Listen Podcast', organizer: 'Adam' },
-      { id: 4, title: 'Speak English', organizer: 'Gregg' },
-      { id: 4, title: 'Meditation', organizer: 'Daniel' }
-    ]
+      // { id: 1, title: 'Read Book', organizer: 'John' }
+    ],
+    event: null,
+    total: 0
   },
   mutations: {
     ADD_EVENT(state, event) {
       state.events.push(event);
+    },
+    SET_EVENTS(state, events) {
+      state.events = events;
+    },
+    SET_EVENT(state, event) {
+      state.event = event;
+    },
+    SET_TOTAL(state, total) {
+      state.total = total;
     }
   },
   actions: {
@@ -34,6 +41,29 @@ export default new Vuex.Store({
       return EventService.postEvent(event).then(function () {
         commit('ADD_EVENT', event);
       });
+    },
+    fetchEvents({ commit }, { limit, page }) {
+      EventService.getEvents(limit, page)
+          .then(response => {
+            commit('SET_EVENTS', response.data)
+            commit('SET_TOTAL', response.headers['x-total-count'])
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    },
+    fetchEvent({ commit, getters }, id) {
+      let event = getters.getEventById(id);
+
+      if (event) {
+        commit('SET_EVENT', event);
+        return;
+      }
+
+      EventService.getEvent(id)
+          .then(response => {
+            commit('SET_EVENT', response.data);
+          });
     }
   },
   modules: {},

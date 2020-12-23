@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <router-view/>
+    <router-view :key="$route.fullPath"/>
   </div>
 </template>
 <!-- I don't know why but we don't need to register component locally here. -->
