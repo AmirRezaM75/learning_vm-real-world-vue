@@ -47,6 +47,7 @@
 import Datepicker from 'vuejs-datepicker';
 
 export default {
+  name: "EventCreate",
   components: {
     Datepicker
   },

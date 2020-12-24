@@ -3,9 +3,10 @@
     <h1>List of events:</h1>
     <EventCard v-for="event in events" :key="event.id" :event="event"/> <!-- <EventCard></EventCard> -->
     <template v-if="page !== 1">
-      <router-link :to="{ name: 'events.index', query: { page : page - 1 }}" rel="prev">Prev Page</router-link> |
+      <router-link :to="{ name: 'events.index', query: { page : page - 1 }}" rel="prev">Prev Page</router-link>
+      <template v-if="hasNextPage"> | </template>
     </template>
-    <template v-if="$store.state.total > page * 3">
+    <template v-if="hasNextPage">
       <router-link :to="{ name: 'events.index', query: { page : page + 1 }}" rel="next">Next Page</router-link>
     </template>
   </div>
@@ -17,7 +18,7 @@
   import {mapState} from 'vuex';
 
   export default {
-    name: "index",
+    name: "EventList",
     components: {
       EventCard
     },
@@ -25,9 +26,17 @@
       page() {
         return parseInt(this.$route.query.page) || 1;
       },
-      ...mapState(['events'])
+      hasNextPage() {
+        return this.eventsTotal > this.page * this.perPage;
+      },
+      ...mapState(['events', 'eventsTotal'])
     },
     created() {
+      this.perPage = 3
+      /*
+      * Setting perPage here and not in data means it won't be reactive.
+      * We don't need it to be reactive, and this way our component has access to it.
+      */
       this.$store.dispatch('fetchEvents', {
         limit: 3,
         page: this.page
