@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>List of events:</h1>
-    <EventCard v-for="event in events" :key="event.id" :event="event"/> <!-- <EventCard></EventCard> -->
+    <h1>Events for {{ user.user.username }}</h1>
+    <EventCard v-for="event in event.events" :key="event.id" :event="event"/> <!-- <EventCard></EventCard> -->
     <template v-if="page !== 1">
       <router-link :to="{ name: 'events.index', query: { page : page - 1 }}" rel="prev">Prev Page</router-link>
       <template v-if="hasNextPage"> | </template>
@@ -27,9 +27,9 @@
         return parseInt(this.$route.query.page) || 1;
       },
       hasNextPage() {
-        return this.eventsTotal > this.page * this.perPage;
+        return this.event.eventsTotal > this.page * this.perPage;
       },
-      ...mapState(['events', 'eventsTotal'])
+      ...mapState(['event', 'user'])
     },
     created() {
       this.perPage = 3
@@ -37,7 +37,7 @@
       * Setting perPage here and not in data means it won't be reactive.
       * We don't need it to be reactive, and this way our component has access to it.
       */
-      this.$store.dispatch('fetchEvents', {
+      this.$store.dispatch('event/fetchEvents', {
         limit: 3,
         page: this.page
       });

@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     createFreshEventObject() {
-      const user = this.$store.state.user;
+      const user = this.$store.state.user.user;
       const id = Math.floor(Math.random() * 1000000);
       return {
         id: id,
@@ -81,7 +81,7 @@ export default {
       }
     },
     createEvent() {
-      this.$store.dispatch('createEvent', this.event).then(() => {
+      this.$store.dispatch('event/createEvent', this.event).then(() => {
         // 'this' is not working properly if using function() instead of () =>
         this.$router.push({
           name: 'events.show',
