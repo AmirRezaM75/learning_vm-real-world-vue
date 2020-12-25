@@ -88,9 +88,7 @@ export default {
           params: { id: this.event.id }
         });
         this.event = this.createFreshEventObject();
-      }).catch((error) => {
-        console.log(error)
-      });
+      }).catch(() => {});
     }
   }
 }

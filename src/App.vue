@@ -1,10 +1,19 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
+    <NotificationContainer/>
     <router-view :key="$route.fullPath"/>
   </div>
 </template>
-<!-- I don't know why but we don't need to register component locally here. -->
+
+<script>
+import Navbar from "@/components/Navbar";
+import NotificationContainer from "@/components/NotificationContainer";
+
+export default {
+  components: {NotificationContainer, Navbar}
+}
+</script>
 <style>
 html {
   -webkit-text-size-adjust: 100%;
@@ -271,9 +280,3 @@ select::ms-expand {
   opacity: 0;
 }
 </style>
-<script>
-import Navbar from "@/components/Navbar";
-export default {
-  components: {Navbar}
-}
-</script>
