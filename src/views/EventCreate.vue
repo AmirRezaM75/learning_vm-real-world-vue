@@ -45,6 +45,7 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker';
+import NProgress from 'nprogress';
 
 export default {
   name: "EventCreate",
@@ -81,6 +82,7 @@ export default {
       }
     },
     createEvent() {
+      NProgress.start();
       this.$store.dispatch('event/createEvent', this.event).then(() => {
         // 'this' is not working properly if using function() instead of () =>
         this.$router.push({
@@ -88,7 +90,9 @@ export default {
           params: { id: this.event.id }
         });
         this.event = this.createFreshEventObject();
-      }).catch(() => {});
+      }).catch(() => {
+        NProgress.done();
+      });
     }
   }
 }
