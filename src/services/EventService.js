@@ -1,5 +1,5 @@
 import axios from 'axios';
-import NProgress from 'nprogress'
+// import NProgress from 'nprogress'
 
 const apiClient = new axios.create({
     baseURL: 'http://localhost:3000',
@@ -10,6 +10,7 @@ const apiClient = new axios.create({
     }
 });
 
+/*
 apiClient.interceptors.request.use(function (config) {
     NProgress.start();
     return config;
@@ -19,6 +20,7 @@ apiClient.interceptors.response.use(function (response) {
     NProgress.done();
     return response;
 });
+*/
 
 export default {
     getEvents(limit, page) {
