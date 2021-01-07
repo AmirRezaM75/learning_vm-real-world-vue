@@ -56,7 +56,7 @@ export const actions = {
                 dispatch('notification/add', notification, { root: true})
             });
     },
-    fetchEvent({ commit, getters, dispatch }, id) {
+    fetchEvent({ commit, getters }, id) {
         let event = getters.getEventById(id);
 
         if (event) {
@@ -68,7 +68,8 @@ export const actions = {
             .then(response => {
                 commit('SET_EVENT', response.data);
                 return response.data;
-            })
+            });
+        /*
             .catch(error => {
                 let notification = {
                     type: 'error',
@@ -76,6 +77,7 @@ export const actions = {
                 }
                 dispatch('notification/add', notification, { root: true})
             });
+        */
     }
 }
 

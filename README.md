@@ -5,6 +5,12 @@
 npm install
 ```
 
+### Mock json database 
+```
+npm i -g json-server
+json-server -d 1500 db.json
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
