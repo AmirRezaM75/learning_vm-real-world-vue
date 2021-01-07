@@ -11,7 +11,7 @@ import Navbar from "@/components/Navbar";
 import NotificationContainer from "@/components/NotificationContainer";
 
 export default {
-  components: {NotificationContainer, Navbar}
+  components: { NotificationContainer, Navbar }
 }
 </script>
 <style>
