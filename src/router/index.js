@@ -57,18 +57,18 @@ const routes = [
   }
 ];
 
-const vueRouter = new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes
 });
 
-vueRouter.beforeEach( (routeTo, routeFrom, next) => {
+router.beforeEach( (routeTo, routeFrom, next) => {
   NProgress.start();
   next();
 });
 
-vueRouter.afterEach( () => {
+router.afterEach( () => {
   NProgress.done();
 });
 
-export default vueRouter;
+export default router;
