@@ -44,7 +44,16 @@ requireComponent.keys().forEach(fileName => {
 
 Vue.config.productionTip = false;
 
-Vue.use(vuelidate)
+Vue.use(vuelidate);
+
+// Global Mixin
+/*
+Vue.mixin({
+  mounted() {
+    console.log('I am mixed in to every component.');
+  }
+})
+*/
 
 new Vue({
   router,

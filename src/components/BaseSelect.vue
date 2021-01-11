@@ -11,23 +11,14 @@
 </template>
 
 <script>
+import { BaseInputMixin } from "@/mixins/BaseInputMixin";
 export default {
   name: "BaseSelect",
-  inheritAttrs: false,
+  mixins: [BaseInputMixin],
   props: {
-    label: {
-      type: String,
-      default: ''
-    },
     items: {
       type: Array,
       required: true
-    },
-    value: [String, Number],
-  },
-  methods: {
-    updateValue(event) {
-      this.$emit('input', event.target.value)
     }
   }
 }
