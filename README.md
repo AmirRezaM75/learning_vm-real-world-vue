@@ -1,5 +1,5 @@
-# learning_vm-real-world-vue
-
+# Vue Mastery Beginner Path
+| This repository is for educational purposes only
 ## Project setup
 ```
 npm install
@@ -26,5 +26,5 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Source
+If you're just getting started with Vue, check out [Vue Mastery](https://www.vuemastery.com/courses-path/beginner).
